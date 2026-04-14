@@ -20,6 +20,13 @@ const productionOrigins = [
   'https://www.springlakeservices.com',
 ]
 
+// ── SPA static files (production only) — before CORS so assets aren't blocked ─
+
+if (isProduction) {
+  const distPath = process.env.CLIENT_DIST_PATH || path.join(__dirname, '..', '..', '..', 'dist')
+  app.use(express.static(distPath))
+}
+
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true)
@@ -48,11 +55,10 @@ app.get('/api/warm', (_req: Request, res: Response) => {
 // import { exampleRouter } from './example/router.js'
 // app.use('/api', exampleRouter)
 
-// ── SPA static files (production only) ───────────────────────────────────────
+// ── SPA fallback (production only) ───────────────────────────────────────────
 
 if (isProduction) {
   const distPath = process.env.CLIENT_DIST_PATH || path.join(__dirname, '..', '..', '..', 'dist')
-  app.use(express.static(distPath))
   app.get('*', (req: Request, res: Response) => {
     if (path.extname(req.path) !== '') return res.status(404).send('Not found')
     res.sendFile(path.join(distPath, 'index.html'))
