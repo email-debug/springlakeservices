@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #0d1b36;
+  --color-navy-900: #1a2f5e;
+  --color-navy-800: #243f7a;
+  --color-navy-700: #2f5096;
+
+  --color-lake-600: #2d6fa3;
+  --color-lake-500: #3a82ba;
+  --color-lake-400: #5499cc;
+  --color-lake-100: #dceef8;
+  --color-lake-50:  #f0f7fc;
+
+  --color-stone-50: #f9f8f7;
+
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Georgia", "Times New Roman", serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-stone-50);
+    color: #1e293b;
+  }
+}
