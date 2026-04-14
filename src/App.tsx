@@ -23,15 +23,7 @@ export default function App() {
       {/* Nav */}
       <header className="border-b border-slate-200 bg-white">
         <div className="max-w-5xl mx-auto px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div
-              className="w-8 h-8 rounded flex items-center justify-center text-white text-xs font-bold tracking-wide select-none"
-              style={{ backgroundColor: '#1a2f5e', fontFamily: 'Georgia, serif' }}
-            >
-              SL
-            </div>
-            <span className="text-slate-800 font-semibold text-sm tracking-wide">Spring Lake Services</span>
-          </div>
+          <img src="/sls-logo.jpg" alt="Spring Lake Services" className="h-9 w-auto" />
           <a
             href="https://www.timmattingly.com"
             target="_blank"
