@@ -15,6 +15,13 @@ const VENTURES = [
     description: 'Advisory services, writing, and professional background.',
     category: 'Advisory',
   },
+  {
+    name: 'Build Engine',
+    domain: 'TimMattingly.com/projects/build-engine',
+    href: 'https://timmattingly.com/projects/build-engine',
+    description: 'An autonomous AI build orchestration system for managing parallel development sprints.',
+    category: 'Technology',
+  },
 ]
 
 export default function App() {
