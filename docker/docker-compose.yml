@@ -1,0 +1,44 @@
+version: '3.8'
+
+# Spring Lake Services — persistent dev environment
+# Single container running both Vite (5220) and Express (3220).
+#
+# Why one service instead of two: the project's own `npm run dev:all` already runs
+# both processes via `concurrently`. Splitting into two compose services would
+# double the bind-mount overhead, complicate volume sharing for node_modules,
+# and diverge from sibling projects (v2/tim-interactive uses the same
+# single-container pattern). One pane of `docker logs` shows both processes.
+#
+# Ports: 5220 (Vite), 3220 (Express). These are the agent slot reserved for
+# springlakeservices — never overlap with Tim's sacred ports (5173/3173, 5170/3170)
+# or the v2 agent slots (5100-5109 / 3100-3109).
+
+services:
+  springlakeservices:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: springlakeservices
+    image: springlakeservices:latest
+    ports:
+      - "5220:5220"
+      - "3220:3220"
+    volumes:
+      - ..:/app
+      - /app/node_modules
+      - /app/dist
+      - /app/server/node_modules
+      - /app/server/dist
+    env_file:
+      - ../server/.env
+    environment:
+      - NODE_ENV=development
+      - VITE_DEV_PORT=5220
+      - EXPRESS_PORT=3220
+    restart: always
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:5220"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
