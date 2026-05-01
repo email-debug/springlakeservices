@@ -8,10 +8,10 @@ export default function PracticeLayout() {
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#f9f8f7' }}>
       <header className="border-b border-slate-200 bg-white">
-        <div className="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-8 h-[104px] flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link to="/practice" className="flex items-center gap-3">
-              <img src="/sls-logo.jpg" alt="Spring Lake Services" className="h-16 w-auto" />
+              <img src="/sls-logo.jpg" alt="Spring Lake Services" className="h-24 w-auto" />
               <span className="text-sm font-semibold text-slate-900">Investment Advisory Practice</span>
             </Link>
             <span className="text-xs px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
