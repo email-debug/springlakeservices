@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, ExternalLink, Download, FileText, FileWarning } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ExternalLink, Download, FileText, FileWarning } from 'lucide-react'
 import { getClient, type ClientArtifact, type ClientResearch } from './registry'
+
+// Slugs of clients whose research is rendered as web pages within the gated
+// site (markdown source-of-truth lives in this repo's src tree). For all
+// other clients with research, we show source-path-only with a "files
+// local-only" warning.
+const CLIENTS_WITH_WEB_RESEARCH = new Set(['incision'])
 
 type ManifestEntry = {
   category: string
@@ -290,32 +296,54 @@ export default function ClientDetail() {
           {client.research && client.research.length > 0 && (
             <Section title="Research">
               <div className="bg-white rounded-xl border border-slate-200 p-7 space-y-5">
-                {!client.publicDownloadsBase && (
+                {!client.publicDownloadsBase && !CLIENTS_WITH_WEB_RESEARCH.has(client.slug) && (
                   <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg p-3 leading-relaxed">
                     <FileWarning size={12} className="inline mr-1.5 mb-0.5" />
                     Confidential research files. Source markdown lives in the local working repository
                     (<code className="text-xs">investmentAnalyst/clients/{client.slug}/research/</code>) and is not served by this site.
                   </div>
                 )}
-                {client.research.map((r) => (
-                  <div key={r.path} className="border-b border-slate-100 last:border-0 pb-4 last:pb-0">
-                    <div className="flex items-center justify-between mb-2 gap-3">
-                      <div className="flex items-center gap-2 min-w-0">
-                        <FileText size={14} className="text-slate-400 flex-shrink-0" />
-                        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">{RESEARCH_LABEL[r.category]}</span>
+                {client.research.map((r) => {
+                  const linked = CLIENTS_WITH_WEB_RESEARCH.has(client.slug)
+                  const Wrapper = linked
+                    ? ({ children }: { children: React.ReactNode }) => (
+                        <Link
+                          to={`/practice/internal/clients/${client.slug}/research/${r.category}`}
+                          className="block border-b border-slate-100 last:border-0 pb-4 last:pb-0 -mx-3 px-3 py-2 rounded-lg hover:bg-slate-50 transition-colors group"
+                        >
+                          {children}
+                        </Link>
+                      )
+                    : ({ children }: { children: React.ReactNode }) => (
+                        <div className="border-b border-slate-100 last:border-0 pb-4 last:pb-0">{children}</div>
+                      )
+                  return (
+                    <Wrapper key={r.path}>
+                      <div className="flex items-center justify-between mb-2 gap-3">
+                        <div className="flex items-center gap-2 min-w-0">
+                          <FileText size={14} className="text-slate-400 flex-shrink-0" />
+                          <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">{RESEARCH_LABEL[r.category]}</span>
+                        </div>
+                        <div className="flex items-center gap-2 flex-shrink-0">
+                          <span className={`text-xs px-2 py-0.5 rounded-full border ${STATUS_BADGE[r.status] ?? 'bg-slate-100 text-slate-600 border-slate-200'}`}>
+                            {r.status}
+                          </span>
+                          {linked && (
+                            <ArrowRight size={14} className="text-slate-300 group-hover:text-slate-600 transition-colors" />
+                          )}
+                        </div>
                       </div>
-                      <span className={`text-xs px-2 py-0.5 rounded-full border flex-shrink-0 ${STATUS_BADGE[r.status] ?? 'bg-slate-100 text-slate-600 border-slate-200'}`}>
-                        {r.status}
-                      </span>
-                    </div>
-                    <div className="text-sm text-slate-900 font-medium mb-1.5">{r.title}</div>
-                    {r.summary && <p className="text-sm text-slate-600 leading-relaxed mb-2">{r.summary}</p>}
-                    <div className="text-xs text-slate-400 font-mono truncate">
-                      {r.path}
-                      {r.generatedAt && <span className="ml-3 font-sans not-italic">generated {r.generatedAt}</span>}
-                    </div>
-                  </div>
-                ))}
+                      <div className="text-sm text-slate-900 font-medium mb-1.5">{r.title}</div>
+                      {r.summary && <p className="text-sm text-slate-600 leading-relaxed mb-2">{r.summary}</p>}
+                      <div className="text-xs text-slate-400 truncate">
+                        {linked
+                          ? <span className="font-sans">Open research page &rarr;</span>
+                          : <span className="font-mono">{r.path}</span>}
+                        {r.generatedAt && <span className="ml-3 font-sans">generated {r.generatedAt}</span>}
+                      </div>
+                    </Wrapper>
+                  )
+                })}
               </div>
             </Section>
           )}
