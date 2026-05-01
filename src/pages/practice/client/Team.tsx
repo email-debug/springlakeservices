@@ -30,6 +30,14 @@ const TEAM: Member[] = [
     ],
   },
   {
+    name: 'Crystal Winkeler',
+    role: 'Team',
+    initials: 'CW',
+    bio: [
+      'Supports client engagements across project management, materials authoring, and founder coaching. Bio to come.',
+    ],
+  },
+  {
     name: 'Noah Wolthausen',
     credentials: 'MPH',
     role: 'Channel Partner · BioSTL Global Advisory Services',
