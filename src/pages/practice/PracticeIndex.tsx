@@ -7,7 +7,7 @@ export default function PracticeIndex() {
       <section className="border-b border-slate-200 bg-white">
         <div className="max-w-6xl mx-auto px-8 py-16">
           <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#2d6fa3' }}>
-            Investment Analyst Practice
+            Investment Advisory Practice
           </p>
           <h1 className="text-4xl font-bold text-slate-900 mb-5 leading-tight">
             Healthcare startup fundraising,<br />operated like an AI-augmented studio.

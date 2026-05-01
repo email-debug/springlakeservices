@@ -11,8 +11,8 @@ export default function PracticeLayout() {
         <div className="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link to="/practice" className="flex items-center gap-3">
-              <img src="/sls-logo.jpg" alt="Spring Lake Services" className="h-9 w-auto" />
-              <span className="text-sm font-semibold text-slate-900">Investment Analyst Practice</span>
+              <img src="/sls-logo.jpg" alt="Spring Lake Services" className="h-16 w-auto" />
+              <span className="text-sm font-semibold text-slate-900">Investment Advisory Practice</span>
             </Link>
             <span className="text-xs px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
               DRAFT &mdash; INTERNAL
@@ -45,7 +45,7 @@ export default function PracticeLayout() {
       <footer className="border-t border-slate-200 bg-white">
         <div className="max-w-6xl mx-auto px-8 py-6 flex items-center justify-between">
           <p className="text-xs text-slate-400">
-            Spring Lake Services &middot; Investment Analyst Practice (Internal Draft)
+            Spring Lake Services &middot; Investment Advisory Practice (Internal Draft)
           </p>
           <p className="text-xs text-slate-400">
             Not for distribution
