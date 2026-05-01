@@ -21,6 +21,17 @@ const TEAM: Member[] = [
     ],
   },
   {
+    name: 'Alex Stinson',
+    credentials: 'PhD',
+    role: 'Investment Analyst · BioGenerator Ventures',
+    initials: 'AS',
+    bio: [
+      'Investment Analyst at BioGenerator Ventures, where he evaluates life-science innovations, performs due diligence, and brings investment opportunities to the team.',
+      'Joined BioGenerator immediately after earning his PhD in Immunology from Washington University in St. Louis. Doctoral research focused on identifying disease-causing mechanisms in animal models of ultra-rare human autoimmune disorders.',
+      'At WashU, co-directed the Immunology Graduate Student Association and consulted for St. Louis-area biotech startups through the BALSA student group. Prior to St. Louis, managed immunotherapy clinical trials for systemic sclerosis at the University of Michigan.',
+    ],
+  },
+  {
     name: 'Tim Mattingly',
     role: 'Practice Lead',
     initials: 'TM',
