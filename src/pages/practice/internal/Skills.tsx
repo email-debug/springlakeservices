@@ -15,6 +15,7 @@ const SKILLS = [
   { name: 'One-Pager Generation', purpose: 'Single-page investor door-opener. The 90-second skim that earns a first meeting. Also: closing announcement variant.', stages: '4, 8', leverage: '~9x' },
   { name: 'Market Sizing', purpose: 'Patient-population-grounded TAM/SAM/SOM with explicit reimbursement modeling. Not "$4T healthcare."', stages: '2, 4, 7', leverage: '~12x' },
   { name: 'Valuation Comparables', purpose: 'Comp-set table for valuation defense. Read-across to target valuation with named precedents.', stages: '2, 4, 7', leverage: '~10x' },
+  { name: 'Client Harvest', purpose: 'Pull everything in the BioSTL Advisory Ops Airtable base related to a client (Companies, Contacts, Engagements, Interactions, Contracts, Box Files index) into a structured client folder. Read-only and idempotent.', stages: '1, 6, 9', leverage: 'enables flow' },
 ]
 
 export default function Skills() {
@@ -25,7 +26,7 @@ export default function Skills() {
           <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#2d6fa3' }}>
             Internal &middot; Skills
           </p>
-          <h1 className="text-3xl font-bold text-slate-900 mb-4">16 AI-Assisted Skills</h1>
+          <h1 className="text-3xl font-bold text-slate-900 mb-4">17 AI-Assisted Skills</h1>
           <p className="text-base text-slate-500 max-w-2xl leading-relaxed">
             Repeatable units of work. Each skill has a defined purpose, inputs, prompt
             scaffolding, output, quality bar, and human-pass requirement. Drafted in the

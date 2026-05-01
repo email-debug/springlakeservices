@@ -3,6 +3,11 @@ import { ArrowRight } from 'lucide-react'
 
 const SECTIONS = [
   {
+    title: 'Clients',
+    href: '/practice/internal/clients',
+    blurb: 'Active and sample client engagements. Harvested BioSTL context, what we are producing, research, and compliance file.',
+  },
+  {
     title: 'Pipeline',
     href: '/practice/internal/pipeline',
     blurb: 'The 9-stage process from intake through funded round and beyond. Owners, AI leverage points, and gating criteria per stage.',

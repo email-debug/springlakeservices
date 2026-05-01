@@ -10,13 +10,14 @@ export default function ClientIndex() {
             For Healthcare Founders
           </p>
           <h1 className="text-4xl font-bold text-slate-900 mb-5 leading-tight">
-            Raise capital on your terms.<br />
-            Without the broker-dealer baggage.
+            Healthcare fundraising,<br />
+            accelerated.
           </h1>
           <p className="text-lg text-slate-500 max-w-2xl leading-relaxed">
             We help healthcare and biotech startups prepare for and execute fundraises.
             Pitch deck. Financial model. Data room. Investor targeting. Coaching. Process.
-            Compressed by AI to deliver Tier-A quality at sustainable cost.
+            Built by a team that has spent careers in healthcare investment, drug
+            discovery, translational science, and ecosystem building.
           </p>
           <p className="text-sm text-slate-400 mt-6">
             Pre-seed first-time raises through Series B follow-ons. Therapeutics, devices,
@@ -30,7 +31,7 @@ export default function ClientIndex() {
           <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-8">
             How we work
           </h2>
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols-2 gap-5">
             {[
               {
                 title: 'Services',
@@ -39,12 +40,17 @@ export default function ClientIndex() {
               },
               {
                 title: 'Process',
-                blurb: 'How an engagement runs from intake through close. What you do, what we do, what AI does, on what timeline.',
+                blurb: 'How an engagement runs from intake through close. What you do, what we do, on what timeline.',
                 href: '/practice/client/process',
               },
               {
+                title: 'Team',
+                blurb: 'The people behind the practice. Healthcare investors, scientists, operators, and ecosystem partners.',
+                href: '/practice/client/team',
+              },
+              {
                 title: 'FAQ',
-                blurb: 'Common questions on fees, scope, the SEC line, what happens if your raise stretches, and what to expect at each stage.',
+                blurb: 'Common questions on fees, scope, what happens if your raise stretches, and what to expect at each stage.',
                 href: '/practice/client/faq',
               },
             ].map((s) => (
@@ -67,25 +73,28 @@ export default function ClientIndex() {
       <section className="border-b border-slate-200 bg-white">
         <div className="max-w-5xl mx-auto px-8 py-16">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-8">
-            What we are not
+            Why founders work with us
           </h2>
           <div className="prose max-w-3xl text-slate-700 leading-relaxed">
             <p className="mb-4">
-              We are not a broker-dealer. We are not a placement agent. We are not finders.
-              That distinction matters: it means we do not solicit investors on your behalf,
-              we do not take success fees, and we do not negotiate terms with investors.
+              <span className="font-semibold text-slate-900">Deep healthcare experience.</span>{' '}
+              Our team has lived through pre-clinical, IND, pivotal trials, FDA pathways,
+              payer dynamics, and HCP adoption &mdash; on both the operator and investor
+              sides. Your story is told by people who understand the science and the
+              market, not generalists translating from a brief.
             </p>
             <p className="mb-4">
-              What we do: we help you build everything you need to walk into investor
-              meetings looking like you already raised the money. We do the research and
-              hand you the target list. We coach you through the meetings. We support
-              diligence and term-sheet review alongside your securities counsel. You own
-              every investor relationship.
+              <span className="font-semibold text-slate-900">Acceleration.</span>{' '}
+              An experienced team that has run this playbook many times moves materials
+              to investor-ready faster than a first-pass effort. Faster materials means
+              you start meetings sooner, iterate sooner, and close sooner.
             </p>
             <p>
-              That structure is by design. It keeps us legal. It keeps you protected from
-              rescission risk. And it aligns our fees with the quality of your materials
-              and your process &mdash; not with the size of any particular deal.
+              <span className="font-semibold text-slate-900">Often, lower total cost.</span>{' '}
+              Many founders still engage a broker-dealer or placement agent for the raise
+              itself, and that can be the right call. Our work tends to compress the
+              readiness phase and sharpen the materials, which can reduce hours billed
+              elsewhere or make a parallel BD engagement more productive when you need one.
             </p>
           </div>
         </div>

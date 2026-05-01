@@ -10,9 +10,12 @@ import Jobs from './pages/practice/internal/Jobs'
 import Team from './pages/practice/internal/Team'
 import Agents from './pages/practice/internal/Agents'
 import Research from './pages/practice/internal/Research'
+import ClientsIndex from './pages/practice/internal/clients/ClientsIndex'
+import ClientDetail from './pages/practice/internal/clients/ClientDetail'
 import ClientIndex from './pages/practice/client/ClientIndex'
 import Services from './pages/practice/client/Services'
 import Process from './pages/practice/client/Process'
+import TeamClient from './pages/practice/client/Team'
 import FAQ from './pages/practice/client/FAQ'
 
 export default function App() {
@@ -30,9 +33,12 @@ export default function App() {
           <Route path="internal/team" element={<Team />} />
           <Route path="internal/agents" element={<Agents />} />
           <Route path="internal/research" element={<Research />} />
+          <Route path="internal/clients" element={<ClientsIndex />} />
+          <Route path="internal/clients/:slug" element={<ClientDetail />} />
           <Route path="client" element={<ClientIndex />} />
           <Route path="client/services" element={<Services />} />
           <Route path="client/process" element={<Process />} />
+          <Route path="client/team" element={<TeamClient />} />
           <Route path="client/faq" element={<FAQ />} />
         </Route>
       </Routes>

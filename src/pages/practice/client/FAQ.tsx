@@ -1,15 +1,15 @@
 const FAQS = [
   {
     q: 'How are your fees structured?',
-    a: 'Flat fees for discrete deliverables, monthly retainer for full-pipeline engagements, or a hybrid. Typical seed retainer: $15K–$30K/month. Series A/B: $25K–$50K/month. Discrete deliverables (deck, model, data room) range $5K–$25K. We do not take success fees, percentage of capital raised, or any compensation contingent on a securities transaction. That posture is by design and we do not negotiate it.',
+    a: 'Flat fees for discrete deliverables, monthly retainer for full-pipeline engagements, or a hybrid. Typical seed retainer: $15K–$30K/month. Series A/B: $25K–$50K/month. Discrete deliverables (deck, model, data room) range $5K–$25K. We do not take success fees or compensation contingent on a securities transaction; founders running a formal placement typically pair our work with a broker-dealer or placement agent for that side.',
   },
   {
-    q: 'Why no success fees?',
-    a: 'Because we are not registered with the SEC as a broker-dealer. Under SEC interpretation, transaction-based compensation is the "hallmark" of broker activity. Taking a success fee would make us an unregistered broker, which exposes both us and you (your investors could rescind their investments years later). Flat-fee/retainer is the structure that keeps everyone protected.',
+    q: 'Do you take success fees?',
+    a: 'No. Our compensation is flat fees and retainers tied to deliverables and time, not the size or closing of any particular round. If your raise involves transaction-based compensation or formal solicitation of investors, that work belongs with a registered broker-dealer or placement agent &mdash; many of our clients pair us with one.',
   },
   {
     q: 'Will you make introductions to investors?',
-    a: 'We will research and tier your investor universe, build dossiers on the top targets with named partners and warm-intro paths through our networks, and coach you on the outreach. The actual introductions you make are yours to make, in your voice. Where we do facilitate a relationship intro, it is non-transactional and disclosed in writing. We will never email an investor with your pitch materials on your behalf.',
+    a: 'We will research and tier your investor universe, build dossiers on the top targets with named partners and warm-intro paths through our networks, and coach you on the outreach. The actual introductions you make are yours to make, in your voice. Where we facilitate a relationship intro, it is non-transactional and disclosed in writing.',
   },
   {
     q: 'Will you attend investor meetings with us?',
@@ -28,8 +28,8 @@ const FAQS = [
     a: 'Healthcare and biotech broadly. Strongest depth in metabolic/diabetes, translational therapeutics, neuroscience, and digital health/health tech via our healthcare consortium connections. For other therapeutic areas (oncology, rare disease, devices), we engage outside specialists where their domain depth is needed.',
   },
   {
-    q: 'How is AI involved?',
-    a: 'Heavily, in service of speed and consistency. Our team uses AI to draft materials, run competitive research, build market analyses, and audit data rooms in a fraction of the time legacy firms take. Every output is reviewed by a human before it leaves the building. AI does not make the call on whether your deck will land &mdash; that is still senior judgment. AI does the drafting that frees senior judgment to spend time on you.',
+    q: 'Who is on the team?',
+    a: 'Senior healthcare investment, drug-discovery, translational-science, and ecosystem-building experience. Eric Gulve led BioGenerator (BioSTL\'s startup-creation/investment arm) for 15 years and deployed ~$39M into 100+ bioscience startups generating $2.6B+ in follow-on capital. The full team is on the Team page.',
   },
   {
     q: 'What if my raise stretches longer than planned?',
@@ -41,7 +41,7 @@ const FAQS = [
   },
   {
     q: 'Can you help with a SAFE or convertible note round?',
-    a: 'Yes, with the same posture. The SEC line does not depend on whether the security is priced or a SAFE/note &mdash; transaction-based compensation is the issue. We will help you structure, model dilution under conversion scenarios, and prepare materials. Your counsel handles the actual instrument.',
+    a: 'Yes. We will help you structure, model dilution under conversion scenarios, and prepare the materials investors expect. Your counsel handles the actual instrument.',
   },
   {
     q: 'Do you require exclusivity?',
