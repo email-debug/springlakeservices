@@ -28,8 +28,8 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#f9f8f7' }}>
       <header className="border-b border-slate-200 bg-white">
-        <div className="max-w-5xl mx-auto px-8 h-[104px] flex items-center justify-between">
-          <img src="/sls-logo.jpg" alt="Spring Lake Services" className="h-24 w-auto" />
+        <div className="max-w-5xl mx-auto px-8 h-16 flex items-center justify-between">
+          <img src="/sls-logo.jpg" alt="Spring Lake Services" className="h-14 w-auto" />
           <a
             href="https://www.timmattingly.com"
             target="_blank"
