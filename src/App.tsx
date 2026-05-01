@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
+import PracticeAuth from './pages/practice/PracticeAuth'
 import PracticeLayout from './pages/practice/PracticeLayout'
 import PracticeIndex from './pages/practice/PracticeIndex'
 import InternalIndex from './pages/practice/internal/InternalIndex'
@@ -23,7 +24,8 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/practice" element={<PracticeLayout />}>
+        <Route path="/practice" element={<PracticeAuth />}>
+          <Route element={<PracticeLayout />}>
           <Route index element={<PracticeIndex />} />
           <Route path="internal" element={<InternalIndex />} />
           <Route path="internal/pipeline" element={<Pipeline />} />
@@ -40,6 +42,7 @@ export default function App() {
           <Route path="client/process" element={<Process />} />
           <Route path="client/team" element={<TeamClient />} />
           <Route path="client/faq" element={<FAQ />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

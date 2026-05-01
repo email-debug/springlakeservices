@@ -1,0 +1,315 @@
+{
+  "company": "HealthCo",
+  "generated_at": "2026-05-01T23:14:59.113061+00:00",
+  "files": [
+    {
+      "category": "deal-memo",
+      "title": "Series A Deal Memo",
+      "path": "deal-memo/deal_memo.docx",
+      "size_bytes": 46960,
+      "format": "docx"
+    },
+    {
+      "category": "deck",
+      "title": "Investor Pitch Deck",
+      "path": "deck/deck.pptx",
+      "size_bytes": 83044,
+      "format": "pptx",
+      "slides": 27
+    },
+    {
+      "category": "model",
+      "title": "Model Assumptions",
+      "path": "model/assumptions.docx",
+      "size_bytes": 40133,
+      "format": "docx"
+    },
+    {
+      "category": "model",
+      "title": "Financial Model (5-Year)",
+      "path": "model/financial_model.xlsx",
+      "size_bytes": 18740,
+      "format": "xlsx"
+    },
+    {
+      "category": "model",
+      "title": "Proforma Cap Table",
+      "path": "model/proforma.xlsx",
+      "size_bytes": 13727,
+      "format": "xlsx"
+    },
+    {
+      "category": "data-room",
+      "title": "01-Corporate / Corporate Overview",
+      "path": "data-room/01-Corporate/README.docx",
+      "size_bytes": 35841,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "01-Corporate / Current Cap Table",
+      "path": "data-room/01-Corporate/current-cap-table.docx",
+      "size_bytes": 37082,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "01-Corporate / Formation Summary",
+      "path": "data-room/01-Corporate/formation-summary.docx",
+      "size_bytes": 37244,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "01-Corporate / Material Agreements Index",
+      "path": "data-room/01-Corporate/material-agreements-index.docx",
+      "size_bytes": 37559,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "02-IP / IP Overview",
+      "path": "data-room/02-IP/README.docx",
+      "size_bytes": 35802,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "02-IP / Fto Opinion Summary",
+      "path": "data-room/02-IP/fto-opinion-summary.docx",
+      "size_bytes": 37289,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "02-IP / Patent Portfolio Summary",
+      "path": "data-room/02-IP/patent-portfolio-summary.docx",
+      "size_bytes": 37447,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "02-IP / Trade Secrets Inventory",
+      "path": "data-room/02-IP/trade-secrets-inventory.docx",
+      "size_bytes": 37590,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "03-Regulatory / 510k Summary",
+      "path": "data-room/03-Regulatory/510k-summary.docx",
+      "size_bytes": 37130,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "03-Regulatory / Regulatory Overview",
+      "path": "data-room/03-Regulatory/README.docx",
+      "size_bytes": 35792,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "03-Regulatory / Pre Submission Meetings",
+      "path": "data-room/03-Regulatory/pre-submission-meetings.docx",
+      "size_bytes": 37351,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "03-Regulatory / Regulatory Pathway Roadmap",
+      "path": "data-room/03-Regulatory/regulatory-pathway-roadmap.docx",
+      "size_bytes": 37306,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "04-Preclinical-Clinical / Preclinical & Clinical Overview",
+      "path": "data-room/04-Preclinical-Clinical/README.docx",
+      "size_bytes": 35782,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "04-Preclinical-Clinical / Clinical Validation Study",
+      "path": "data-room/04-Preclinical-Clinical/clinical-validation-study.docx",
+      "size_bytes": 37683,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "04-Preclinical-Clinical / Kol Advisory Board",
+      "path": "data-room/04-Preclinical-Clinical/kol-advisory-board.docx",
+      "size_bytes": 37368,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "04-Preclinical-Clinical / Pilot Deployment Results",
+      "path": "data-room/04-Preclinical-Clinical/pilot-deployment-results.docx",
+      "size_bytes": 37696,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "05-CMC-Manufacturing / CMC & Manufacturing Overview",
+      "path": "data-room/05-CMC-Manufacturing/README.docx",
+      "size_bytes": 36140,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "05-CMC-Manufacturing / Cloud Infrastructure",
+      "path": "data-room/05-CMC-Manufacturing/cloud-infrastructure.docx",
+      "size_bytes": 37804,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "05-CMC-Manufacturing / Software Development Process",
+      "path": "data-room/05-CMC-Manufacturing/software-development-process.docx",
+      "size_bytes": 37754,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "06-Market-Competitive / Market & Competitive Overview",
+      "path": "data-room/06-Market-Competitive/README.docx",
+      "size_bytes": 35726,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "06-Market-Competitive / Competitive Landscape",
+      "path": "data-room/06-Market-Competitive/competitive-landscape.docx",
+      "size_bytes": 37913,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "06-Market-Competitive / Market Sizing Tam Sam Som",
+      "path": "data-room/06-Market-Competitive/market-sizing-tam-sam-som.docx",
+      "size_bytes": 37680,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "06-Market-Competitive / Reimbursement Strategy",
+      "path": "data-room/06-Market-Competitive/reimbursement-strategy.docx",
+      "size_bytes": 38084,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "07-Financials / Financials Overview",
+      "path": "data-room/07-Financials/README.docx",
+      "size_bytes": 35745,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "07-Financials / Historical Actuals Summary",
+      "path": "data-room/07-Financials/historical-actuals-summary.docx",
+      "size_bytes": 37399,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "07-Financials / Model Pointer",
+      "path": "data-room/07-Financials/model-pointer.docx",
+      "size_bytes": 37231,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "07-Financials / Runway And Burn",
+      "path": "data-room/07-Financials/runway-and-burn.docx",
+      "size_bytes": 37446,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "08-Team / Team Overview",
+      "path": "data-room/08-Team/README.docx",
+      "size_bytes": 35682,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "08-Team / Advisor Board Roster",
+      "path": "data-room/08-Team/advisor-board-roster.docx",
+      "size_bytes": 37270,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "08-Team / Bios Leadership",
+      "path": "data-room/08-Team/bios-leadership.docx",
+      "size_bytes": 37595,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "08-Team / Org Chart Hiring Plan",
+      "path": "data-room/08-Team/org-chart-hiring-plan.docx",
+      "size_bytes": 37626,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "09-Board-Materials / Board Materials Overview",
+      "path": "data-room/09-Board-Materials/README.docx",
+      "size_bytes": 35753,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "09-Board-Materials / Governance Structure",
+      "path": "data-room/09-Board-Materials/governance-structure.docx",
+      "size_bytes": 37349,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "09-Board-Materials / Material Resolutions",
+      "path": "data-room/09-Board-Materials/material-resolutions.docx",
+      "size_bytes": 37375,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "09-Board-Materials / Prior Board Decks Index",
+      "path": "data-room/09-Board-Materials/prior-board-decks-index.docx",
+      "size_bytes": 37286,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "10-Diligence-QA / Diligence Q&A Overview",
+      "path": "data-room/10-Diligence-QA/README.docx",
+      "size_bytes": 35712,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "10-Diligence-QA / Data Requests Log",
+      "path": "data-room/10-Diligence-QA/data-requests-log.docx",
+      "size_bytes": 37671,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "10-Diligence-QA / Frequently Asked Investor Questions",
+      "path": "data-room/10-Diligence-QA/frequently-asked-investor-questions.docx",
+      "size_bytes": 40607,
+      "format": "docx"
+    },
+    {
+      "category": "data-room",
+      "title": "Data Room Master Index",
+      "path": "data-room/README.docx",
+      "size_bytes": 37712,
+      "format": "docx"
+    }
+  ]
+}

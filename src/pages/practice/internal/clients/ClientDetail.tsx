@@ -1,6 +1,37 @@
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, ExternalLink } from 'lucide-react'
-import { getClient, type ClientArtifact } from './registry'
+import { ArrowLeft, ExternalLink, Download, FileText, FileWarning } from 'lucide-react'
+import { getClient, type ClientArtifact, type ClientResearch } from './registry'
+
+type ManifestEntry = {
+  category: string
+  title: string
+  path: string
+  size_bytes: number
+  format: string
+}
+
+type Manifest = {
+  company: string
+  generated_at: string
+  files: ManifestEntry[]
+}
+
+const RESEARCH_LABEL: Record<ClientResearch['category'], string> = {
+  'competitive': 'Competitive Landscape',
+  'investment-market': 'Investment Market',
+  'market-sizing': 'Market Sizing',
+  'regulatory': 'Regulatory Pathway',
+  'ip': 'IP Landscape',
+  'kol': 'KOL Research',
+  'other': 'Other',
+}
+
+function fmtBytes(n: number): string {
+  if (n < 1024) return `${n} B`
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(0)} KB`
+  return `${(n / 1024 / 1024).toFixed(1)} MB`
+}
 
 const ARTIFACT_LABEL: Record<string, string> = {
   'deck': 'Pitch Deck',
@@ -58,6 +89,29 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 export default function ClientDetail() {
   const { slug } = useParams()
   const client = slug ? getClient(slug) : undefined
+  const [manifest, setManifest] = useState<Manifest | null>(null)
+  const [manifestErr, setManifestErr] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!client?.publicDownloadsBase) {
+      setManifest(null)
+      return
+    }
+    const url = `${client.publicDownloadsBase}manifest.json`
+    fetch(url)
+      .then((r) => {
+        if (!r.ok) throw new Error(`status ${r.status}`)
+        return r.json()
+      })
+      .then((m: Manifest) => {
+        setManifest(m)
+        setManifestErr(null)
+      })
+      .catch((e) => {
+        setManifest(null)
+        setManifestErr(`Manifest not yet available (${String(e.message)}). Run the conversion script.`)
+      })
+  }, [client?.publicDownloadsBase])
 
   if (!client) {
     return (
@@ -233,8 +287,95 @@ export default function ClientDetail() {
             </Section>
           )}
 
+          {client.research && client.research.length > 0 && (
+            <Section title="Research">
+              <div className="bg-white rounded-xl border border-slate-200 p-7 space-y-5">
+                {!client.publicDownloadsBase && (
+                  <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg p-3 leading-relaxed">
+                    <FileWarning size={12} className="inline mr-1.5 mb-0.5" />
+                    Confidential research files. Source markdown lives in the local working repository
+                    (<code className="text-xs">investmentAnalyst/clients/{client.slug}/research/</code>) and is not served by this site.
+                  </div>
+                )}
+                {client.research.map((r) => (
+                  <div key={r.path} className="border-b border-slate-100 last:border-0 pb-4 last:pb-0">
+                    <div className="flex items-center justify-between mb-2 gap-3">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <FileText size={14} className="text-slate-400 flex-shrink-0" />
+                        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">{RESEARCH_LABEL[r.category]}</span>
+                      </div>
+                      <span className={`text-xs px-2 py-0.5 rounded-full border flex-shrink-0 ${STATUS_BADGE[r.status] ?? 'bg-slate-100 text-slate-600 border-slate-200'}`}>
+                        {r.status}
+                      </span>
+                    </div>
+                    <div className="text-sm text-slate-900 font-medium mb-1.5">{r.title}</div>
+                    {r.summary && <p className="text-sm text-slate-600 leading-relaxed mb-2">{r.summary}</p>}
+                    <div className="text-xs text-slate-400 font-mono truncate">
+                      {r.path}
+                      {r.generatedAt && <span className="ml-3 font-sans not-italic">generated {r.generatedAt}</span>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Section>
+          )}
+
+          {client.publicDownloadsBase && (
+            <Section title="Public download package">
+              <div className="bg-white rounded-xl border border-slate-200 p-7">
+                {manifest && (
+                  <>
+                    <div className="text-xs text-slate-500 mb-4">
+                      Generated {manifest.generated_at?.slice(0, 19).replace('T', ' ')} &middot; {manifest.files.length} files
+                    </div>
+                    {Object.entries(
+                      manifest.files.reduce<Record<string, ManifestEntry[]>>((acc, f) => {
+                        ;(acc[f.category] ||= []).push(f)
+                        return acc
+                      }, {}),
+                    ).map(([cat, items]) => (
+                      <div key={cat} className="mb-5 last:mb-0">
+                        <div className="text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                          {ARTIFACT_LABEL[cat] ?? cat} <span className="text-slate-400 ml-2">({items.length})</span>
+                        </div>
+                        <div className="space-y-1">
+                          {items.map((f) => (
+                            <a
+                              key={f.path}
+                              href={`${client.publicDownloadsBase}${f.path}`}
+                              download
+                              className="flex items-center justify-between py-1.5 px-2 -mx-2 rounded-lg hover:bg-slate-50 transition-colors group"
+                            >
+                              <div className="flex items-center gap-2 min-w-0 flex-1">
+                                <Download size={13} className="text-slate-400 flex-shrink-0 group-hover:text-slate-700" />
+                                <span className="text-sm text-slate-700 truncate">{f.title}</span>
+                              </div>
+                              <div className="flex items-center gap-3 flex-shrink-0 ml-3 text-xs text-slate-400">
+                                <span className="uppercase font-mono">{f.format}</span>
+                                <span>{fmtBytes(f.size_bytes)}</span>
+                              </div>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                )}
+                {manifestErr && (
+                  <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg p-3 leading-relaxed">
+                    <FileWarning size={12} className="inline mr-1.5 mb-0.5" />
+                    {manifestErr}
+                  </div>
+                )}
+                {!manifest && !manifestErr && (
+                  <div className="text-xs text-slate-400">Loading download manifest&hellip;</div>
+                )}
+              </div>
+            </Section>
+          )}
+
           {client.artifacts.length > 0 && (
-            <Section title="Artifacts">
+            <Section title="Artifacts (source files)">
               <div className="bg-white rounded-xl border border-slate-200 p-7">
                 {Object.entries(artifactsByCategory).map(([cat, items]) => (
                   <div key={cat} className="mb-4 last:mb-0">

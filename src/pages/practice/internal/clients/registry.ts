@@ -17,6 +17,15 @@ export interface ClientArtifact {
   status: 'Draft' | 'In Review' | 'Final' | 'Sample'
 }
 
+export interface ClientResearch {
+  category: 'competitive' | 'investment-market' | 'market-sizing' | 'regulatory' | 'ip' | 'kol' | 'other'
+  title: string
+  path: string
+  status: 'Draft' | 'In Review' | 'Final'
+  generatedAt?: string
+  summary?: string
+}
+
 export interface ClientExecutive {
   name: string
   title: string
@@ -74,7 +83,19 @@ export interface ClientMetadata {
   notes: string
   isSample?: boolean
 
+  // Research deliverables (markdown files in clients/<slug>/research/).
+  // For confidential clients (Incision, GT) these stay local — we render the
+  // titles and a "local-only" note. For HealthCo (and any future public
+  // sample) the converted .docx versions are staged and listed in
+  // publicDownloadsBase manifest.
+  research?: ClientResearch[]
+
   artifacts: ClientArtifact[]
+
+  // If set, the client detail page fetches `<publicDownloadsBase>manifest.json`
+  // and renders a public-downloads section with links to staged Office files.
+  // Used for the HealthCo sample so it can be served via the SLS website.
+  publicDownloadsBase?: string
 
   harvest: {
     lastRun: string | null
@@ -130,6 +151,10 @@ const INCISION: ClientMetadata = {
   },
   tags: ['Advisory'],
   notes: "Active client through Noah's BioSTL channel since June 2024. Tim is one of seven assigned advisors on the active retainer. Latest interactions (March 2026) center on US health-system buyer pursuit (MU Health, SSM). Not a fundraise engagement — Incision raised Series B late 2023 and is in commercial scaling mode. Watch for Series C engagement opportunity down the road.",
+  research: [
+    { category: 'competitive', title: 'Competitive Landscape — surgical training & perioperative software', path: 'investmentAnalyst/clients/incision/research/competitive-landscape.md', status: 'Final', generatedAt: '2026-05-01', summary: 'Three rings — direct (Touch Surgery/Medtronic, Osso VR, FundamentalVR), adjacent (Caresyntax, Proximie, Theator, Activ Surgical, Avail), incumbent (Ethicon Institute, Stryker/IRCAD, Medtronic Academia). White-space: full-perioperative-team focus + RCS England accreditation + workflow+content bundle. Top threats: Caresyntax (best-funded adjacent, M&A mode) and Medtronic (Touch Surgery + Hugo bundling). Strategic acquirer map: Medtronic, J&J Ethicon, Stryker, Caresyntax, Elsevier/Wolters Kluwer.' },
+    { category: 'investment-market', title: 'Investment Market — comparable rounds + lead-investor map', path: 'investmentAnalyst/clients/incision/research/investment-market.md', status: 'Final', generatedAt: '2026-05-01', summary: 'Comp rounds: Incision $7M Series B (Nov 2023, anchor), Caresyntax $180M Series C ext, Proximie $80M, Osso VR $66M, FundamentalVR $20M, Theator $39.5M. M&A refs: Digital Surgery/Medtronic, Osmosis/Elsevier, Avail/Mendaera. Aggregate: ~$30M median Series B, ~$73M median Series C in segment. Lead-investor inventory: Oak HC/FT, Insight, Advent Life Sciences, EQT Life Sciences, Lauxera, MTIP, Optum Ventures with named partners. Series C scenarios: $30-50M US-led ($150-250M post) / $15-25M EU bridge / strategic exit. Recommend financial lead + strategic CVC in syndicate.' },
+  ],
   artifacts: [],
   harvest: {
     lastRun: '2026-05-01',
@@ -183,6 +208,13 @@ const GT_DIAGNOSTICS: ClientMetadata = {
   },
   tags: ['NEURO360', 'Advisory', 'AI Update'],
   notes: 'Highly strategic client given NEURO360 alignment with Eric. Product (HiPAL Pro) is a 5-7 minute self-administered AI-based cognitive assessment, FDA-listed, designed for primary care / Medicare AWV / senior living / clinical trial pre-screening / biomarker triage channels. Inflection-point thesis (lecanemab/donanemab approvals create demand for early detection at scale) is the central narrative driver. Working repository at stp/gt/ has 7 PPTX files plus the deck strategy and master structure markdown.',
+  research: [
+    { category: 'market-sizing', title: 'TAM/SAM/SOM — five-channel patient-population sizing', path: 'investmentAnalyst/clients/gt-diagnostics/research/market-sizing.md', status: 'Final', generatedAt: '2026-05-01', summary: 'Patient-population grounded across the 5 published channels. US TAM ~$255M, SAM $150-170M, SOM ramps $2.8M Y1 → $36M Y5. Sensitivity range: $20-60M Y5. Reconciles to Linus / C2N / Cogstate / Cambridge Cognition disclosures (HiPAL more conservative than Linus marketing). Honest call: price as practice software, not a directly reimbursed test.' },
+    { category: 'competitive', title: 'Competitive Landscape — direct, adjacent, incumbent', path: 'investmentAnalyst/clients/gt-diagnostics/research/competitive-landscape.md', status: 'Final', generatedAt: '2026-05-01', summary: 'Three rings — direct digital cognitive assessment (Linus Health, Cogstate, BrainCheck, Neurotrack, Altoida, Cambridge Cognition, C2N), biomarker cascade (Quanterix, Roche, C2N), paper incumbents (MMSE, MoCA, ADAS-Cog). HiPAL Pro\'s defensible wedge: 5-7 min duration + self-administered + FDA-listed + trial-score compatibility (predicts MMSE/ADAS-Cog). Primary threat: Linus Health (>$60M raised, athenahealth integration, Morningside-backed). Strategic acquirer map: Eisai (already C2N investor) and Lilly (Quanterix/Cogstate partner) most likely strategic capital in next 12-24 months; Roche/Quanterix cascade-partner exits at B/C.' },
+    { category: 'investment-market', title: 'Investment Market — comparable rounds + lead investor map', path: 'investmentAnalyst/clients/gt-diagnostics/research/investment-market.md', status: 'Final', generatedAt: '2026-05-01', summary: 'Comp rounds 2024-2026: BrainCheck $15M Mar-2024, BrainCheck $13M, Neurotrack $10M, Altoida $14M, C2N $25M strategic + $7M ADDF + $10M follow-on, Alto Neuroscience $129M IPO. Aggregate median ~$13M raise, $30-60M pre-money. Lead investors with named partners: Next Coast, S3, UPMC Enterprises, Morningside, M Ventures, Eisai US, Lilly Ventures + UK options IP Group/Parkwalk/BGF. Recommended round: £4-5M at ~£15M pre, anchored by Alzheimer\'s-franchise strategic (Eisai first) before financial VCs price it. Leqembi/donanemab thesis partially priced into biomarker comps (Quanterix, C2N), NOT yet into early-stage digital cognitive — genuine upside window through 2026. UK→Delaware flip recommended once lead identified.' },
+    { category: 'regulatory', title: 'Regulatory Pathway — FDA-exempt status, predicate analysis, upgrade strategy', path: 'investmentAnalyst/clients/gt-diagnostics/research/regulatory-pathway.md', status: 'Final', generatedAt: '2026-05-01', summary: 'CRITICAL FINDING: HiPAL Pro is 510(k)-EXEMPT under product code PTY (§882.1470 Computerized Cognitive Assessment Aid, Class II exempt) — verified in FDA GUDID. The "FDA-listed" claim is accurate but means listing under the exemption created by Cognivue\'s 2015 De Novo (DEN130033), NOT clearance. Largest near-term risk: marketing language creep beyond the strict "aid only, not diagnostic" claim ceiling. Series A conditions to fund: (1) audit website/deck for claim-scope compliance, (2) 510(k) upgrade with dual predicates (Cogstate K171658 + Cognivue Clarity) + US-representative validation cohort + PCCP under FDA Dec-2024 final guidance + Breakthrough Device Designation request + CE/UKCA Class IIa stack. Total regulatory envelope: ~$0.8-1.6M over 18 months.' },
+    { category: 'ip', title: 'IP Landscape — portfolio + competitive patents + white-space', path: 'investmentAnalyst/clients/gt-diagnostics/research/ip-landscape.md', status: 'Final', generatedAt: '2026-05-01', summary: 'Two critical findings: (1) GT Diagnostics is a TauRx + Genting JV (Genting TauRx Diagnostic Centre Sdn Bhd, formed 2012) — NOT a UK university spin-out as initially briefed. Schelter holds dual TauRx/GT roles. Cleaner assignment audit is TauRx ↔ GT intra-group flow. (2) Public databases surface trademarks (HIPAL PRO #90154263, SIGNEXX #90424963) but NO clearly GT-assigned utility patents — either in 18-month pre-publication blackout, held under TauRx, or moat is genuinely thin. Largest IP question for institutional DD; push management for full docket. Heaviest competitor filers: Linus Health, Cogstate, Cambridge Cognition, Altoida. White-space: smartphone-native, 5-7 min, non-drawing-task, MMSE-equivalent-output methodology. Recommend outside IP counsel for FTO.' },
+  ],
   artifacts: [
     { category: 'deck', title: 'HiPAL Master Deck Structure (10 core + appendix taxonomy)', path: 'stp/gt/HiPAL_Master_Deck_Structure.md', format: 'md', status: 'Final' },
     { category: 'deck', title: 'HiPAL Deck Strategy (4 audience-tailored variants)', path: 'stp/gt/HiPAL_Deck_Strategy.md', format: 'md', status: 'Final' },
@@ -246,6 +278,7 @@ const HEALTHCO: ClientMetadata = {
   tags: ['Sample', 'Demo', 'Cardiac AI'],
   notes: 'This is a sample / fictional client. HealthCo does not exist. The profile is a plausible Series-A cardiac AI imaging company built for the practice\'s draft website to demonstrate what we produce across a full engagement. All sample artifacts use the same profile (510(k)-cleared 2024 ATTR-CM detection, De Novo in progress for strain auto-measurement, $15M Series A at $50M pre-money, 7 named pilot health systems, 18K echos analyzed, JACC publication 2025).',
   isSample: true,
+  publicDownloadsBase: '/healthco/',
   artifacts: [
     { category: 'deal-memo', title: 'Series A Deal Memo', path: 'investmentAnalyst/clients/healthco/artifacts/deal-memo/deal_memo.md', format: 'md', status: 'Sample' },
     { category: 'deck', title: 'Investor Pitch Deck (markdown source)', path: 'investmentAnalyst/clients/healthco/artifacts/deck/deck.md', format: 'md', status: 'Sample' },
